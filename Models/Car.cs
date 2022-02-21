@@ -38,6 +38,18 @@ namespace Dealership.Models
       }
     }
 
+    public static void PriceByYear (Car c)
+    {
+      int year = int.Parse(c.MakeModel.Split(" ")[0]);
+      decimal prc = c.Price;
+
+      for (int i = year; i < 2022; i ++ ){
+         prc *= 0.96m;
+      }
+
+      c.Price = Decimal.ToInt32(prc);
+    }
+    
     public static string DakarRating( Car c ){
       int mileageRating; 
       int dakarRating;
