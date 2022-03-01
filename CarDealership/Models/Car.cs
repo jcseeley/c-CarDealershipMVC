@@ -1,22 +1,21 @@
 using System;
 using System.Collections.Generic;
 
-namespace Dealership.Models
+namespace CarDealership.Models
 {
   public class Car
   {
     public string MakeModel { get; set; }
     public int Price { get; set; }
     public int Miles { get; set; }
+    private static List<Car> _vehicles = new List<Car> {};
 
-    public int Endurance { get; set; }
-
-    public Car(string makeModel, int price, int miles, int endurance)
+    public Car(string makeModel, int price, int miles)
     {
       MakeModel = makeModel;
       Price = price;
       Miles = miles;
-      Endurance = endurance;
+      _vehicles.Add(this);
     }
 
     public void SetPrice(int newPrice)
@@ -50,35 +49,6 @@ namespace Dealership.Models
       c.Price = Decimal.ToInt32(prc);
     }
     
-    public static string DakarRating( Car c ){
-      int mileageRating; 
-      int dakarRating;
-      if (c.Miles > 250000){
-        mileageRating = 1;
-      } else if ( c.Miles > 150000 ){
-        mileageRating = 3;
-      } else if (c.Miles > 75000){
-        mileageRating = 5;
-      } else if (c.Miles > 50000){
-        mileageRating = 7;
-      } else {
-        mileageRating = 10;
-      }
-
-      dakarRating = mileageRating + c.Endurance;
-
-      if (dakarRating > 15){
-        return "this car will be good at the Dakar Rally!";
-      }else if (dakarRating > 12){
-        return "this car will be decent at the Dakar Rally!";
-      }else if (dakarRating > 9){
-        return "this car is pretty meh for rallying, rally at your own risk!";
-      }else if (dakarRating > 6){
-        return "this car is not good for rallying. It's highly unlikely that you'll finish the race.";
-      }else {
-        return "DO NOT RALLY THIS CAR! CERTAIN DEATH!";
-      }
-    }
     public string GetMakeModel()
     {
       return MakeModel;
@@ -97,6 +67,11 @@ namespace Dealership.Models
     public bool WorthBuying(int maxPrice)
     {
       return (Price <= maxPrice);
+    }
+
+    public static List<Car> GetAll()
+    {
+      return _vehicles;
     }
   }
 }
