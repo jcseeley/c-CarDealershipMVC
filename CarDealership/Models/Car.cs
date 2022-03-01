@@ -8,7 +8,7 @@ namespace CarDealership.Models
     public string MakeModel { get; set; }
     public int Price { get; set; }
     public int Miles { get; set; }
-    private static List<Car> _vehicles = new List<Car> {};
+    public static List<Car> _vehicles = new List<Car> {};
 
     public Car(string makeModel, int price, int miles)
     {

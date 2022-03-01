@@ -24,5 +24,18 @@ namespace CarDealership.Controllers
       Car newCar = new Car(makeModel, price, miles);
       return RedirectToAction("Index");
     }
+    
+    [HttpGet("/discount")]
+    public ActionResult DiscountCar()
+    {
+      return View();
+    }
+
+    [HttpPost("/discount")]
+    public ActionResult Discount(int discount)
+    {
+      Car.LowerCost(Car._vehicles, discount);
+      return RedirectToAction("Index");
+    }
   }
 }
