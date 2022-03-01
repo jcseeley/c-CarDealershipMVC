@@ -18,7 +18,7 @@
       <ul>
         @foreach (Car automobile in Model)
         {
-          <li>@automobile.MakeModel, Price $: @automobile.Price, Miles: @automobile.Miles</li>
+          <li>@automobile.MakeModel, Price: $@automobile.Price, Miles: @automobile.Miles</li>
         }
       </ul>
       <a href="/cars/new">Add Another Car</a>
